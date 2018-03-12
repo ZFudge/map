@@ -304,4 +304,6 @@ const map = {
 
 map.activeTerritories.push(...map.territories);
 map.random();
-
+map.activeTerritories.forEach(function(territory) {
+	territory.onclick = () => map.checkActive(territory);
+});
