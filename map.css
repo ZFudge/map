@@ -3,3 +3,7 @@ body {
 	padding: 0;
 	text-align: center;
 }
+
+p {
+	transition-duration: 1s;
+}
