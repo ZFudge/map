@@ -1,0 +1,51 @@
+body {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+h1 {
+	font-size: 50px;
+}
+
+p {
+	transition-timing-function: cubic-bezier(.88,.08,.89,.29);
+	font-size: 30px;
+	height: 1em;
+	-webkit-touch-callout:none;
+	-webkit-user-select:none;
+	-khtml-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+
+}
+
+.basic {
+	fill: #BBB;
+}
+
+.hovered {
+	cursor: pointer;
+	fill: #999;
+	stroke-width:0.5;
+	transform: scale(1.003);
+}
+
+.green {
+	fill: #009900;
+}
+
+.orange {
+	fill: #ff5400;
+}
+
+.red {
+	fill: #c60000;
+}
+
+.black {
+	fill: #111111;
+}
+
