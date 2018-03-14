@@ -33,19 +33,19 @@ p {
 	transform: scale(1.003);
 }
 
-.green {
+div svg .green {
 	fill: #009900;
 }
 
-.orange {
+div svg .orange {
 	fill: #ff5400;
 }
 
-.red {
+div svg .red {
 	fill: #c60000;
 }
 
-.black {
+div svg .black {
 	fill: #111111;
 }
 
