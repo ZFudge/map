@@ -5,7 +5,7 @@
   "main": "map.js",
   "scripts": {
     "dev": "webpack --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production && cp src/index.html dist/index.html && cp src/map.css dist/map.css"
   },
   "repository": {
     "type": "git",
