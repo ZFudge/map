@@ -1,5 +1,5 @@
 const map = {
-	territories: document.getElementsByClassName("territory"),
+	territories: null,
 	activeTerritories: [],
 	count: 0,
 	last: null,
@@ -104,27 +104,29 @@ document.getElementById("reset").onclick = () => {
 	map.random();
 }
 
-function getMapData() {
-	console.log('called')
+function getMapData(location) {
 	const xhr = new XMLHttpRequest();
-
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === XMLHttpRequest.DONE) {
 			console.log(xhr.response)
-			map.keyMap = JSON.parse(xhr.response)[0].region;
-			map.random();
+			const response = JSON.parse(xhr.response);
+			map.keyMap = response.docs[0].region;
 			for (var key in map.keyMap) {
 				map.keyMap[key].nickname = function() {
 			        return this.nicknames[Math.floor(Math.random() * this.nicknames.length)];
 			    }.bind(map.keyMap[key]);
 			}
+			document.getElementById('svg').innerHTML = response.svg;
+			map.territories = document.getElementsByClassName("territory");
+			map.activeTerritories.push(...map.territories);
+			map.activeTerritories.forEach((territory) => territory.onclick = () => map.checkActive(territory));
+			map.random();
 		}
 	}
-	xhr.open("GET", "http://localhost:3000/us");
+	xhr.open("GET", `http://localhost:3000/${location}`);
 	xhr.send();
 }
 
-getMapData();
-
-map.activeTerritories.push(...map.territories);
-map.activeTerritories.forEach((territory) => territory.onclick = () => map.checkActive(territory));
+Array.from(document.getElementById('choice').children).forEach(function(btn) {
+	btn.onclick = () => getMapData(btn.dataset.key);
+});
